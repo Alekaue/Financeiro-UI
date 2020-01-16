@@ -1,3 +1,4 @@
+import { environment } from './../../environments/environment';
 import { FormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -29,8 +30,8 @@ export function tokenGetter(): string {
     JwtModule.forRoot({
       config: {
         tokenGetter: tokenGetter,
-        whitelistedDomains: ['localhost:8080'],
-        blacklistedRoutes: ['http://localhost:8080/oauth/token']
+        whitelistedDomains: environment.whiteListedDomains,
+        blacklistedRoutes: environment.blackListedRoutes
       }
   })
   ],
