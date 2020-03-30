@@ -50,7 +50,7 @@ export class AuthService {
   }
 
   logout() {
-      return this.http.delete('http://localhost:8080/tokens/revoke', { withCredentials: true } )
+      return this.http.delete( `${environment.apiUrl}/tokens/revoke`, { withCredentials: true } )
         .toPromise()
         .then(() => {
           this.limparAccessTokenInvalido();

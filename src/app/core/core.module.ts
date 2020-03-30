@@ -1,20 +1,22 @@
-import { ErrorHandlerService } from './error-handler.service';
 import { CommonModule } from '@angular/common';
 import { NgModule, LOCALE_ID } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { Title } from '@angular/platform-browser';
-
-import { ConfirmDialogModule } from 'primeng/components/confirmdialog/confirmdialog';
-import { ConfirmationService } from 'primeng/components/common/api';
-import { ToastyModule } from 'ng2-toasty';
 import { JwtHelperService } from '@auth0/angular-jwt';
+
+import { ConfirmDialogModule } from 'primeng/confirmdialog';
+import { MessageService } from 'primeng/components/common/messageservice';
+import { ConfirmationService } from 'primeng/api';
+import { GrowlModule } from 'primeng/growl';
 
 import { PessoaService } from '../pessoas/pessoa.service';
 import { LancamentoService } from './../lancamentos/lancamento.service';
 import { CategoriaService } from '../categorias/categoria.service';
+import { RelatoriosService } from './../relatorios/relatorios.service';
+import { ErrorHandlerService } from './error-handler.service';
+import { AuthService } from './../seguranca/auth.service';
 
 import { NavbarComponent } from './navbar/navbar.component';
-import { AuthService } from './../seguranca/auth.service';
 import { PaginaNaoEncontradaComponent } from './pagina-nao-encontrada.component';
 import { NaoAutorizadoComponent } from './nao-autorizado.component';
 
@@ -27,17 +29,19 @@ import { NaoAutorizadoComponent } from './nao-autorizado.component';
     NaoAutorizadoComponent],
     exports: [
       NavbarComponent,
-      ToastyModule,
+      GrowlModule,
       ConfirmDialogModule
     ],
     providers: [
     LancamentoService,
     PessoaService,
     CategoriaService,
+    RelatoriosService,
     ErrorHandlerService,
     AuthService,
 
     ConfirmationService,
+    MessageService,
     JwtHelperService,
     Title,
     { provide: LOCALE_ID, useValue: 'pt-BR' }
@@ -46,7 +50,7 @@ import { NaoAutorizadoComponent } from './nao-autorizado.component';
     CommonModule,
     RouterModule,
 
-    ToastyModule.forRoot(),
+    GrowlModule,
     ConfirmDialogModule,
 
   ]

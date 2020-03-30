@@ -1,11 +1,13 @@
 import { Title } from '@angular/platform-browser';
+import { FormControl } from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+
 import { ErrorHandlerService } from './../../core/error-handler.service';
 import { PessoaService } from './../pessoa.service';
-import { FormControl } from '@angular/forms';
 import { Pessoa } from './../../core/model';
-import { Component, OnInit } from '@angular/core';
-import { ToastyService } from 'ng2-toasty';
-import { ActivatedRoute, Router } from '@angular/router';
+
+import { MessageService } from 'primeng/components/common/messageservice';
 
 @Component({
   selector: 'app-pessoa-cadastro',
@@ -15,11 +17,15 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class PessoaCadastroComponent implements OnInit {
 
   pessoa = new Pessoa();
+  estados: any[];
+  cidades: any[];
+  estadoSelecionado: number;
+
 
   constructor(
     private pessoaService: PessoaService,
     private errorHandler: ErrorHandlerService,
-    private toasty: ToastyService,
+    private messageService: MessageService,
     private route: ActivatedRoute,
     private router: Router,
     private title: Title
@@ -30,9 +36,27 @@ export class PessoaCadastroComponent implements OnInit {
 
     this.title.setTitle('Nova pessoa');
 
+    this.carregarEstado();
+
     if (codigoPessoa) {
       this.carregarPessoa(codigoPessoa);
     }
+  }
+
+  carregarEstado() {
+    this.pessoaService.listarEstados()
+      .then(lista => {
+        this.estados = lista.map(uf => ({ label: uf.nome, value: uf.codigo}));
+      })
+      .catch(erro => this.errorHandler.handle(erro));
+  }
+
+  carregarCidades() {
+    this.pessoaService.pesquisarCidade(this.estadoSelecionado)
+      .then(lista => {
+        this.cidades = lista.map(c => ({ label: c.nome, value: c.codigo}));
+      })
+      .catch(erro => this.errorHandler.handle(erro));
   }
 
   get editando() {
@@ -43,6 +67,12 @@ export class PessoaCadastroComponent implements OnInit {
     this.pessoaService.buscarPorCodigo(codigo)
       .then( pessoa => {
         this.pessoa = pessoa;
+
+        this.estadoSelecionado = (this.pessoa.endereco.cidade) ?
+              this.pessoa.endereco.cidade.estado.codigo : null;
+        if (this.estadoSelecionado) {
+          this.carregarCidades();
+        }
         this.atualizarTituloEdicao();
       })
         .catch(erro => this.errorHandler.handle(erro));
@@ -60,7 +90,7 @@ export class PessoaCadastroComponent implements OnInit {
   adicionarPessoa(form: FormControl) {
     this.pessoaService.adicionar(this.pessoa)
       .then(pessoaAdicionada => {
-        this.toasty.success('Pessoa cadastrada com sucesso!');
+        this.messageService.add({ severity: 'success', detail: 'Pessoa cadastrada com sucesso!'});
 
         this.router.navigate(['/pessoas', pessoaAdicionada.codigo]);
 
@@ -73,7 +103,7 @@ export class PessoaCadastroComponent implements OnInit {
       .then( pessoa => {
         this.pessoa = pessoa;
 
-        this.toasty.success('Pessoa alterada com sucesso!');
+        this.messageService.add({ severity: 'success', detail: 'Pessoa alterada com sucesso!'});
         this.atualizarTituloEdicao();
       })
         .catch(erro => this.errorHandler.handle(erro));

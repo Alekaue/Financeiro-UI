@@ -13,7 +13,9 @@ a {
 a:hover, a:focus {
   text-decoration: underline;
 }
-
+a, button {
+  margin-right: .25em;
+}
 label {
   font-weight: bold;
 }
@@ -40,9 +42,9 @@ label {
 }
 
 .col-acoes-header{
-  width: 120px;
+  width: 100px;
 }
-.col-acoes {
-  width: 90px;
+
+.col-acoes-content {
   text-align: center;
 }

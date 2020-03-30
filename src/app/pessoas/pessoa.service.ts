@@ -1,9 +1,8 @@
 import { environment } from './../../environments/environment';
-import { Pessoa } from './../core/model';
+import { Pessoa, Estado, Cidade } from './../core/model';
 
 import { HttpHeaders, HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-
 import { HttpParams } from '@angular/common/http';
 
 export class PessoaFiltro {
@@ -18,9 +17,13 @@ export class PessoaFiltro {
 export class PessoaService {
 
  pessoasUrl: string;
+ cidadesUrl: string;
+ estadosUrl: string;
 
 constructor(private http: HttpClient) {
     this.pessoasUrl = `${environment.apiUrl}/pessoas`;
+    this.cidadesUrl = `${environment.apiUrl}/cidades`;
+    this.estadosUrl = `${environment.apiUrl}/estados`;
 }
 
 
@@ -78,22 +81,24 @@ constructor(private http: HttpClient) {
    atualizar(pessoa: Pessoa): Promise<Pessoa> {
     return this.http.put<Pessoa>(
       `${this.pessoasUrl}/${pessoa.codigo}`, pessoa
-    ).toPromise()
-      .then(response => {
-        const pessoaAlterada = response as Pessoa;
-
-        return pessoaAlterada;
-      });
+    ).toPromise();
    }
 
    buscarPorCodigo(codigo: number): Promise<Pessoa> {
-    return this.http.get(`${this.pessoasUrl}/${codigo}`)
-      .toPromise()
-      .then( response => {
-        const pessoa = response as Pessoa;
+    return this.http.get<Pessoa>(`${this.pessoasUrl}/${codigo}`)
+      .toPromise();
+  }
 
+  listarEstados(): Promise<Estado[]> {
+    return this.http.get<Estado[]>(this.estadosUrl)
+      .toPromise();
 
-        return pessoa;
-      });
+  }
+
+  pesquisarCidade(estado): Promise<Cidade[]> {
+    let params = new HttpParams();
+    params = params.set('estado', estado);
+    return this.http.get<Cidade[]>(this.cidadesUrl, {params})
+      .toPromise();
   }
  }
