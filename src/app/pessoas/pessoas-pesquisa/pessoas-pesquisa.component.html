@@ -34,8 +34,13 @@
           <ng-template pTemplate="body" let-pessoa>
             <tr>
               <td>{{ pessoa.nome }}</td>
+<<<<<<< HEAD
               <td>{{ pessoa.endereco.cidade?.nome }}</td>
               <td>{{ pessoa.endereco.cidade?.estado.nome }}</td>
+=======
+              <td>{{ pessoa.endereco.cidade }}</td>
+              <td>{{ pessoa.endereco.estado }}</td>
+>>>>>>> 3de6277fdba638b1ef7b137d43917aa5ce0a0017
               <td>
                 <a href="javascript:;" [pTooltip]="pessoa.ativo ? 'Desativar' : 'Ativar' "
                   tooltipPosition="top"
@@ -44,8 +49,13 @@
                 </a>
               </td>
               <td>
+<<<<<<< HEAD
                 <a pButton icon="pi pi-pencil" pTooltip="Editar" tooltipPosition="top"
                 [routerLink]="['/pessoas', pessoa.codigo]"></a>
+=======
+                <button pButton icon="pi pi-pencil" pTooltip="Editar" tooltipPosition="top"
+                [routerLink]="['/pessoas', pessoa.codigo]"></button>
+>>>>>>> 3de6277fdba638b1ef7b137d43917aa5ce0a0017
                 <button pButton icon="pi pi-trash"
                   pTooltip="Excluir"
                   tooltipPosition="top"

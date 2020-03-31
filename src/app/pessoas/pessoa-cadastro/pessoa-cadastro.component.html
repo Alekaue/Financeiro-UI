@@ -63,6 +63,7 @@
              text="Informe o CEP"></app-message>
 
         </div>
+<<<<<<< HEAD
           <div class="ui-g-12 ui-md-6 ui-fluid">
             <label>Estado</label>
 
@@ -74,10 +75,21 @@
 
               <app-message [control]="estado" error="required"
                 text="Informe o estado"></app-message>
+=======
+        <div class="ui-g-12 ui-md-6 ui-fluid">
+            <label>Cidade</label>
+            <input pInputText type="text"  name="cidade"
+            [(ngModel)]="pessoa.endereco.cidade"
+            #cidade="ngModel" required>
+
+            <app-message [control]="cidade" error="required"
+              text="Informe o cidade"></app-message>
+>>>>>>> 3de6277fdba638b1ef7b137d43917aa5ce0a0017
 
           </div>
 
           <div class="ui-g-12 ui-md-6 ui-fluid">
+<<<<<<< HEAD
             <label>Cidade</label>
 
             <p-dropdown placeholder="Selecione..." [autoWidth]="false"
@@ -90,6 +102,15 @@
               text="Informe a cidade"></app-message>
 
 
+=======
+            <label>Estado</label>
+            <input pInputText type="text"  name="estado"
+            [(ngModel)]="pessoa.endereco.estado"
+            #estado="ngModel" required>
+
+            <app-message [control]="estado" error="required"
+              text="Informe o estado"></app-message>
+>>>>>>> 3de6277fdba638b1ef7b137d43917aa5ce0a0017
           </div>
 
           <div class="ui-g-12">

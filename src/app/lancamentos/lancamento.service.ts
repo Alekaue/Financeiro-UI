@@ -1,5 +1,9 @@
 import { environment } from './../../environments/environment';
 import { Lancamento } from './../core/model';
+<<<<<<< HEAD
+=======
+import { LancamentoCadastroComponent } from './lancamento-cadastro/lancamento-cadastro.component';
+>>>>>>> 3de6277fdba638b1ef7b137d43917aa5ce0a0017
 
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
@@ -25,7 +29,11 @@ export class LancamentoService {
   lancamentosUrl: string;
 
   constructor(private http: HttpClient) {
+<<<<<<< HEAD
     this.lancamentosUrl = `${environment.apiUrl}/lancamentos`;
+=======
+    this.lancamentosUrl = `${environment.apiUrl}//lancamentos`;
+>>>>>>> 3de6277fdba638b1ef7b137d43917aa5ce0a0017
   }
 
   pesquisar(filtro: LancamentoFiltro): Promise<any> {

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import { Component, OnInit } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
@@ -11,6 +12,19 @@ import { ErrorHandlerService } from './../../core/error-handler.service';
 import { Lancamento } from 'src/app/core/model';
 import { MessageService } from 'primeng/components/common/messageservice';
 
+=======
+import { Title } from '@angular/platform-browser';
+import { LancamentoService } from './../lancamento.service';
+import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
+import { PessoaService } from './../../pessoas/pessoa.service';
+import { Component, OnInit } from '@angular/core';
+
+import { CategoriaService } from 'src/app/categorias/categoria.service';
+import { ErrorHandlerService } from './../../core/error-handler.service';
+import { Lancamento } from 'src/app/core/model';
+import { ToastyService } from 'ng2-toasty';
+import { ActivatedRoute, Router } from '@angular/router';
+>>>>>>> 3de6277fdba638b1ef7b137d43917aa5ce0a0017
 
 @Component({
   selector: 'app-lancamento-cadastro',
@@ -34,7 +48,11 @@ export class LancamentoCadastroComponent implements OnInit {
   constructor(
     private categoriaService: CategoriaService,
     private lancamentoService: LancamentoService,
+<<<<<<< HEAD
     private messageService: MessageService,
+=======
+    private toasty: ToastyService,
+>>>>>>> 3de6277fdba638b1ef7b137d43917aa5ce0a0017
     private pessoaService: PessoaService,
     private errorHandler: ErrorHandlerService,
     private route: ActivatedRoute,
@@ -84,8 +102,13 @@ export class LancamentoCadastroComponent implements OnInit {
 
   validarTamanhoMinimo(valor: number) {
     return (input: FormControl) => {
+<<<<<<< HEAD
       return (!input.value || input.value.length >= valor) ? null : { tamanhoMinimo: { tamanho: valor }};
     };
+=======
+      return (!input.value || input.value.length >= valor ? null : { tamanhoMinimo: { tamanho: valor }})
+    }
+>>>>>>> 3de6277fdba638b1ef7b137d43917aa5ce0a0017
   }
 
   get editando() {
@@ -113,7 +136,11 @@ export class LancamentoCadastroComponent implements OnInit {
   adicionarLancamento() {
      this.lancamentoService.adicionar(this.formulario.value)
         .then( lancamentoAdicionado => {
+<<<<<<< HEAD
           this.messageService.add({ severity: 'success', detail: 'Lançamento adiciondo com sucesso!'});
+=======
+          this.toasty.success('Lançamento adiciondo com sucesso!');
+>>>>>>> 3de6277fdba638b1ef7b137d43917aa5ce0a0017
 
           this.router.navigate(['/lancamentos', lancamentoAdicionado.codigo]);
 
@@ -126,7 +153,11 @@ export class LancamentoCadastroComponent implements OnInit {
       .then(lancamento => {
         // this.lancamento = lancamento;
         this.formulario.patchValue(lancamento);
+<<<<<<< HEAD
         this.messageService.add({ severity: 'success', detail: 'Lancamento alterado com sucesso!'});
+=======
+        this.toasty.success('Lancamento alterado com sucesso!');
+>>>>>>> 3de6277fdba638b1ef7b137d43917aa5ce0a0017
         this.atualizarTituloEdicao();
       })
       .catch(erro => this.errorHandler.handle(erro));

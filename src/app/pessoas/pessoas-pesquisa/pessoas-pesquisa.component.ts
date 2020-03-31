@@ -1,4 +1,5 @@
 import { Title } from '@angular/platform-browser';
+<<<<<<< HEAD
 import { Component, OnInit, ViewChild } from '@angular/core';
 
 import { ErrorHandlerService } from './../../core/error-handler.service';
@@ -7,6 +8,16 @@ import { PessoaService, PessoaFiltro } from '../pessoa.service';
 import { Table } from 'primeng/table';
 import { MessageService } from 'primeng/components/common/messageservice';
 import { LazyLoadEvent, ConfirmationService } from 'primeng/components/common/api';
+=======
+import { Pessoa } from './../../core/model';
+import { FormControl } from '@angular/forms';
+import { ErrorHandlerService } from './../../core/error-handler.service';
+import { LazyLoadEvent, ConfirmationService } from 'primeng/components/common/api';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { PessoaService, PessoaFiltro } from '../pessoa.service';
+import { Table } from 'primeng/table';
+import { ToastyService } from 'ng2-toasty';
+>>>>>>> 3de6277fdba638b1ef7b137d43917aa5ce0a0017
 
 
 @Component({
@@ -24,7 +35,11 @@ export class PessoasPesquisaComponent  implements OnInit {
     constructor(
       private pessoaService: PessoaService,
       private errorHandler: ErrorHandlerService,
+<<<<<<< HEAD
       private messageService: MessageService,
+=======
+      private toasty: ToastyService,
+>>>>>>> 3de6277fdba638b1ef7b137d43917aa5ce0a0017
       private confirmation: ConfirmationService,
       private title: Title
       ) {}
@@ -62,7 +77,11 @@ export class PessoasPesquisaComponent  implements OnInit {
       this.pessoaService.excluir(pessoa.codigo)
         .then(() => {
           this.grid.reset();
+<<<<<<< HEAD
           this.messageService.add({severity: 'success', detail: 'Pessoa excluida com sucesso!'});
+=======
+          this.toasty.success('Pessoa excluida com sucesso!');
+>>>>>>> 3de6277fdba638b1ef7b137d43917aa5ce0a0017
         })
         .catch(erro => this.errorHandler.handle(erro));
     }
@@ -73,7 +92,11 @@ export class PessoasPesquisaComponent  implements OnInit {
         .then(() => {
           const acao = novoStatus ? 'ativada' : 'desativada';
           pessoa.ativo = novoStatus;
+<<<<<<< HEAD
           this.messageService.add({severity: 'success', detail: `Pessoa ${acao} com sucesso!`});
+=======
+          this.toasty.success(`Pessoa ${acao} com sucesso!`);
+>>>>>>> 3de6277fdba638b1ef7b137d43917aa5ce0a0017
         })
         .catch(erro => this.errorHandler.handle(erro));
     }

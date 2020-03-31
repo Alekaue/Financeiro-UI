@@ -1,10 +1,17 @@
 import { HttpInterceptor, HttpRequest, HttpHandler, HttpEvent } from '@angular/common/http';
+<<<<<<< HEAD
 import { Injectable } from '@angular/core';
 
 import { AuthService } from './auth.service';
 
 import { Observable, from } from 'rxjs';
 import { mergeMap } from 'rxjs/operators';
+=======
+import { Observable, from } from 'rxjs';
+import { mergeMap } from 'rxjs/operators';
+import { AuthService } from './auth.service';
+import { Injectable } from '@angular/core';
+>>>>>>> 3de6277fdba638b1ef7b137d43917aa5ce0a0017
 
 export class NotAuthenticatedError { }
 

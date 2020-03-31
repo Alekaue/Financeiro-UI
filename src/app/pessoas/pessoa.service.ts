@@ -1,8 +1,16 @@
 import { environment } from './../../environments/environment';
+<<<<<<< HEAD
 import { Pessoa, Estado, Cidade } from './../core/model';
 
 import { HttpHeaders, HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+=======
+import { Pessoa } from './../core/model';
+
+import { HttpHeaders, HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
+
+>>>>>>> 3de6277fdba638b1ef7b137d43917aa5ce0a0017
 import { HttpParams } from '@angular/common/http';
 
 export class PessoaFiltro {
@@ -17,6 +25,7 @@ export class PessoaFiltro {
 export class PessoaService {
 
  pessoasUrl: string;
+<<<<<<< HEAD
  cidadesUrl: string;
  estadosUrl: string;
 
@@ -24,6 +33,11 @@ constructor(private http: HttpClient) {
     this.pessoasUrl = `${environment.apiUrl}/pessoas`;
     this.cidadesUrl = `${environment.apiUrl}/cidades`;
     this.estadosUrl = `${environment.apiUrl}/estados`;
+=======
+
+constructor(private http: HttpClient) {
+    this.pessoasUrl = `${environment.apiUrl}/pessoas`;
+>>>>>>> 3de6277fdba638b1ef7b137d43917aa5ce0a0017
 }
 
 
@@ -81,6 +95,7 @@ constructor(private http: HttpClient) {
    atualizar(pessoa: Pessoa): Promise<Pessoa> {
     return this.http.put<Pessoa>(
       `${this.pessoasUrl}/${pessoa.codigo}`, pessoa
+<<<<<<< HEAD
     ).toPromise();
    }
 
@@ -100,5 +115,24 @@ constructor(private http: HttpClient) {
     params = params.set('estado', estado);
     return this.http.get<Cidade[]>(this.cidadesUrl, {params})
       .toPromise();
+=======
+    ).toPromise()
+      .then(response => {
+        const pessoaAlterada = response as Pessoa;
+
+        return pessoaAlterada;
+      });
+   }
+
+   buscarPorCodigo(codigo: number): Promise<Pessoa> {
+    return this.http.get(`${this.pessoasUrl}/${codigo}`)
+      .toPromise()
+      .then( response => {
+        const pessoa = response as Pessoa;
+
+
+        return pessoa;
+      });
+>>>>>>> 3de6277fdba638b1ef7b137d43917aa5ce0a0017
   }
  }
