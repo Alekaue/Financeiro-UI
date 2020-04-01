@@ -38,11 +38,7 @@
              text="Informe uma descricao (obrigatória)"></app-message>
 
             <app-message [control]="formulario.get('descricao')" error="tamanhoMinimo"
-<<<<<<< HEAD
             text=" Mínimo de {{ formulario.get('descricao').errors?.tamanhoMinimo?.tamanho }} caracteres."></app-message>
-=======
-            text=" MMMMínimo de {{ formulario.get('descricao').errors?.tamanhoMinimo?.tamanho }} caracteres."></app-message>
->>>>>>> 3de6277fdba638b1ef7b137d43917aa5ce0a0017
 
 
       </div>
@@ -82,14 +78,8 @@
           formControlName="observacao"></textarea>
       </div>
       <div class="ui-g-12">
-<<<<<<< HEAD
         <button pButton type="submit" label="Salvar" [disabled]="formulario.invalid"></button>
         <button pButton type="button" label="Novo" class="ui-button-info"
-=======
-        <button pButton type="submit" label="Salvar"></button>
-        <button pButton type="button" label="Novo" class="ui-button-info"
-          [disabled]="formulario.invalid"
->>>>>>> 3de6277fdba638b1ef7b137d43917aa5ce0a0017
           (click)="novo()"></button>
         <a routerLink="/lancamentos"> Voltar para a pesquisa</a>
       </div>

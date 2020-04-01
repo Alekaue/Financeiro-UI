@@ -58,13 +58,8 @@
                     <td class="col-valor-content"
                           [ngStyle]="{ color: lancamento.tipo === 'DESPESA' ? 'red' : 'blue'}">{{lancamento.valor | number:'1.2-2'}}</td>
                     <td class="col-acoes">
-<<<<<<< HEAD
                       <a pButton icon="pi pi-pencil" pTooltip="Editar" tooltipPosition="top"
                         [routerLink]="['/lancamentos', lancamento.codigo]"></a>
-=======
-                      <button pButton icon="pi pi-pencil" pTooltip="Editar" tooltipPosition="top"
-                        [routerLink]="['/lancamentos', lancamento.codigo]"></button>
->>>>>>> 3de6277fdba638b1ef7b137d43917aa5ce0a0017
                       <button pButton icon="pi pi-trash"
                         pTooltip="Excluir"
                         tooltipPosition="top"

@@ -5,10 +5,7 @@
 export const environment = {
   production: false,
   apiUrl: 'http://localhost:8080',
-<<<<<<< HEAD
 
-=======
->>>>>>> 3de6277fdba638b1ef7b137d43917aa5ce0a0017
   whiteListedDomains: ['localhost:8080'],
   blackListedRoutes: ['http://localhost:8080/oauth/token']
 };

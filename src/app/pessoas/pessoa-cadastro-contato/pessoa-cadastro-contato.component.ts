@@ -1,12 +1,7 @@
 import { FormControl } from '@angular/forms';
-<<<<<<< HEAD
 import { Component, OnInit, Input } from '@angular/core';
 
 import { Contato } from './../../core/model';
-=======
-import { Contato } from './../../core/model';
-import { Component, OnInit, Input } from '@angular/core';
->>>>>>> 3de6277fdba638b1ef7b137d43917aa5ce0a0017
 
 @Component({
   selector: 'app-pessoa-cadastro-contato',

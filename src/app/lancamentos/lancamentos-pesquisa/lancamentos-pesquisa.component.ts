@@ -1,7 +1,3 @@
-<<<<<<< HEAD
-=======
-import { Table } from 'primeng/table';
->>>>>>> 3de6277fdba638b1ef7b137d43917aa5ce0a0017
 import { Title } from '@angular/platform-browser';
 import { Component, OnInit, ViewChild } from '@angular/core';
 
@@ -9,14 +5,9 @@ import { AuthService } from './../../seguranca/auth.service';
 import { LancamentoService, LancamentoFiltro } from './../lancamento.service';
 import { ErrorHandlerService } from './../../core/error-handler.service';
 
-<<<<<<< HEAD
 import { Table } from 'primeng/table';
 import { LazyLoadEvent, ConfirmationService } from 'primeng/components/common/api';
 import { MessageService } from 'primeng/components/common/messageservice';
-=======
-import { LazyLoadEvent, ConfirmationService } from 'primeng/components/common/api';
-import { ToastyService } from 'ng2-toasty';
->>>>>>> 3de6277fdba638b1ef7b137d43917aa5ce0a0017
 
 
 @Component({
@@ -34,11 +25,7 @@ export class LancamentosPesquisaComponent implements OnInit {
   constructor(
       private lancamentoService: LancamentoService,
       private auth: AuthService,
-<<<<<<< HEAD
       private messageService: MessageService,
-=======
-      private toasty: ToastyService,
->>>>>>> 3de6277fdba638b1ef7b137d43917aa5ce0a0017
       private confirmation: ConfirmationService,
       private errorHandler: ErrorHandlerService,
       private title: Title
@@ -79,11 +66,7 @@ export class LancamentosPesquisaComponent implements OnInit {
     this.lancamentoService.excluir(lancamento.codigo)
       .then(() => {
         this.grid.reset();
-<<<<<<< HEAD
         this.messageService.add({ severity: 'success', detail: 'Lançamento excluido com sucesso!'});
-=======
-        this.toasty.success('Lançamento excluido com sucesso!');
->>>>>>> 3de6277fdba638b1ef7b137d43917aa5ce0a0017
       })
       .catch(erro => this.errorHandler.handle(erro));
   }

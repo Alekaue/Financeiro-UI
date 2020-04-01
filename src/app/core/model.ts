@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 export class Estado {
   codigo: number;
   nome: string;
@@ -10,20 +9,13 @@ export class Cidade {
   estado = new Estado();
 }
 
-=======
->>>>>>> 3de6277fdba638b1ef7b137d43917aa5ce0a0017
 export class Endereco {
   logradouro: string;
   numero: string;
   complemento: string;
   bairro: string;
   cep: string;
-<<<<<<< HEAD
   cidade = new Cidade();
-=======
-  cidade: string;
-  estado: string;
->>>>>>> 3de6277fdba638b1ef7b137d43917aa5ce0a0017
 }
 
 export class Contato {
@@ -64,7 +56,4 @@ export class Lancamento {
   pessoa = new Pessoa();
   categoria = new Categoria();
 }
-<<<<<<< HEAD
 
-=======
->>>>>>> 3de6277fdba638b1ef7b137d43917aa5ce0a0017

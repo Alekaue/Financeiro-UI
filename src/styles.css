@@ -13,13 +13,9 @@ a {
 a:hover, a:focus {
   text-decoration: underline;
 }
-<<<<<<< HEAD
 a, button {
   margin-right: .25em;
 }
-=======
-
->>>>>>> 3de6277fdba638b1ef7b137d43917aa5ce0a0017
 label {
   font-weight: bold;
 }
